@@ -1,13 +1,14 @@
 const express = require("express");
+const jwt = require("jsonwebtoken");
 const argon2 = require("argon2");
 const User = require("../models/User");
 const router = express.Router();
 router.post("/register", async (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { username, password, role = "user" } = req.body;
     const hashedPassword = await argon2.hash(password);
 
-    const newUser = new User({ username, password: hashedPassword });
+    const newUser = new User({ username, password: hashedPassword, role });
     await newUser.save();
     res
       .status(201)
@@ -25,7 +26,16 @@ router.post("login", async (req, res) => {
     const isPasswordMatch = argon2.verify(user.password, password);
     if (!isPasswordMatch) return res.status(400).json("Invalid Credentials");
 
-    res.status(200).json(`${username} signed in successfully`);
+    // Generate JWT
+    const token = jwt.sign(
+      { id: user._id, role: user.role },
+      process.env.JWT_SECRET, // Store the secret in the .env file
+      { expiresIn: "1h" }
+    );
+
+    res
+      .status(200)
+      .json({ message: `${username} signed in successfully`, token });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

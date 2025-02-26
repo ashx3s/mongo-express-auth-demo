@@ -1,12 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth");
+const adminRoutes = require("./routes/admin");
 const PORT = process.env.PORT | 3000;
 const app = express();
 
 app.use(express.json());
 app.use("/api/auth", authRoutes);
-
+app.use("/api/admin/", adminRoutes);
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
