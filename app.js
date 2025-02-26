@@ -1,13 +1,23 @@
 const express = require("express");
-const connectToDatabase = require("./middleware/connectToDatabase");
+const mongoose = require("mongoose");
+const authRoutes = require("./routes/auth");
 const PORT = process.env.PORT | 3000;
 const app = express();
 
 app.use(express.json());
+app.use("/api/auth", authRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
+
+// Connect to MongoDB
+mongoose
+  .connect(process.env.MONGO_URI, {
+    dbName: "userAuth",
+  })
+  .then(() => console.log("MongoDB connected!"))
+  .catch((err) => console.log(err));
 
 app.listen(PORT, () => {
   console.log(`Running on http://localhost:${PORT}`);
