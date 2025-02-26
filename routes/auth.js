@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const argon2 = require("argon2");
 const User = require("../models/User");
 const router = express.Router();
+
 router.post("/register", async (req, res) => {
   try {
     const { username, password, role = "user" } = req.body;
@@ -18,15 +19,15 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.post("login", async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
     const user = await User.findOne({ username });
     if (!user) return res.status(400).json(`User: ${username} not found`);
+
     const isPasswordMatch = argon2.verify(user.password, password);
     if (!isPasswordMatch) return res.status(400).json("Invalid Credentials");
 
-    // Generate JWT
     const token = jwt.sign(
       { id: user._id, role: user.role },
       process.env.JWT_SECRET, // Store the secret in the .env file
