@@ -45,11 +45,15 @@ These demonstrations expand on those in the lecture content for a web security c
 ### User Model
 
 - **Objective: Create a data model for creating new users**
+- Controls what the data coming and going from the db looks like
 
 ### Auth Route
 
 - **Objective: Create post routes register and login**
+- allows user to sign up and sign in
+- set roles for admin vs user
 
 ### Password Hashing
 
 - **Objective: Add password hashing to protect new user password**
+- Set up encryption string and decryption for when users login and create passwords
