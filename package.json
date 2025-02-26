@@ -3,12 +3,17 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "node --env=.env app.js",
+    "start": "node --env-file=.env app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
-  "description": "Educational demonstration of authentiction with mongodb and express."
+  "description": "Educational demonstration of authentiction with mongodb and express.",
+  "dependencies": {
+    "argon2": "^0.41.1",
+    "express": "^4.21.2",
+    "mongoose": "^8.10.2"
+  }
 }
