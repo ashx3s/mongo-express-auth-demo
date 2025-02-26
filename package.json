@@ -1,13 +1,14 @@
 {
   "name": "express-mongo-auth-demos",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
+    "start": "node --env=.env app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
-  "description": ""
+  "description": "Educational demonstration of authentiction with mongodb and express."
 }
