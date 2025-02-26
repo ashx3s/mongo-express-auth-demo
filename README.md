@@ -14,7 +14,6 @@ These demonstrations expand on those in the lecture content for a web security c
 - [Express](https://expressjs.com/)
 - [Mongoose](https://mongoosejs.com/)
 - [argon2](https://argon2.online/)
-- [body-parser](https://github.com/expressjs/body-parser#readme)
 - [jasonwebtoken](https://github.com/auth0/node-jsonwebtoken#readme)
 
 ## Resources
@@ -22,3 +21,35 @@ These demonstrations expand on those in the lecture content for a web security c
 - [OWASP Password Storage](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html)
 - [Salted Password Hashing](https://www.codeproject.com/Articles/704865/Salted-Password-Hashing-Doing-it-Right)
 - [Role Based Access Control](https://www.okta.com/identity-101/what-is-role-based-access-control-rbac/)
+- [MongoDB Deploy a Free Cluster](https://www.mongodb.com/docs/atlas/tutorial/deploy-free-tier-cluster/)
+- [Why You Don't Need Body Parser](https://medium.com/@mmajdanski/express-body-parser-and-why-may-not-need-it-335803cd048c)
+- [Node Environment Variable Support](https://nodejs.org/en/learn/command-line/how-to-read-environment-variables-from-nodejs)
+- [Async Await Mongoose](https://www.slingacademy.com/article/mongoose-how-to-connect-to-multiple-databases/)
+
+## Development Notes 1
+
+### MongoDB Cluster
+
+- **Objective: Create a users database**
+- Pay attention to whitelisted IP addresses
+- Save your password
+- Save your connection string
+
+### Setup App & Connect to Mongo Atlas
+
+- **Objective: Initialize a server and establish a secure connection to your database**
+- Use node built in support for .env in package.json scripts
+- Use the built in json support in express
+- Create connection to database
+
+### User Model
+
+- **Objective: Create a data model for creating new users**
+
+### Auth Route
+
+- **Objective: Create post routes register and login**
+
+### Password Hashing
+
+- **Objective: Add password hashing to protect new user password**
